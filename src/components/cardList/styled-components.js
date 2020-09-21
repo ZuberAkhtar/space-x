@@ -22,6 +22,29 @@ grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
 
 `;
 
+const LoadButton = styled.button`
+background-color: #C6E09B;
+  border: none;
+  color: black;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: .25rem;
+
+  :active {
+    background-color: #7BBA01 !important;
+    box-shadow: none!important
+  }
+
+  :focus {
+    background-color: #7BBA01 !important;
+    box-shadow: none!important
+  }
+`;
+
 export default {
-    CardListContainer
+    CardListContainer, LoadButton
 }

@@ -56,11 +56,11 @@ class FilterContainer extends React.Component {
 }
 
    filterData = (year = null, launch = null, land = null) => {
-   
+    const limitFilter = `?limit=150`;
     const yearFilter = (year!==null) ? `&launch_year=${year}` : '';
     const launchFilter = (launch!==null) ? `&launch_success=${launch}` : '';
     const landFilter = (land!==null ) ? `&land_success=${land}` : '';
-    const filterUrl = `${yearFilter}${launchFilter}${landFilter}`;
+    const filterUrl = `${limitFilter}${yearFilter}${launchFilter}${landFilter}`;
     this.props.setLoader(true)
     return axios.get(`${BASE_URL}${filterUrl}`).then(res=>{
 
@@ -68,7 +68,7 @@ class FilterContainer extends React.Component {
 
         this.props.updateProgramsList({ data, loader : false })
 
-        browserHistory.replace(`/${filterUrl}`)
+        browserHistory.replace(`/${yearFilter}${launchFilter}${landFilter}`)
 
     }).catch(err => {
         console.log('err',err)

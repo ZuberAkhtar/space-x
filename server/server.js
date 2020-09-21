@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import App from "../src/App";
 import RenderFullPage from './renderFullPage'
-import { BASE_URL } from '../src/network/url'
+import { BASE_URL, INITIAL_LIMIT } from '../src/network/url'
 import reducer from "../src/redux/root-reducer";
 import { setProgramsList } from '../src/redux/action'
 
@@ -15,7 +15,7 @@ import { setProgramsList } from '../src/redux/action'
 
 const store = createStore(reducer);
 
-export const getInitialData = (req, res) => axios.get(BASE_URL)
+export const getInitialData = (req, res) => axios.get(`${BASE_URL}?limit=${INITIAL_LIMIT}`)
   .then(response => {
     store.dispatch(setProgramsList({data : response.data}))
     // store.dispatch({
